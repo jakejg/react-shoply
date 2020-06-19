@@ -3,10 +3,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
     width: 250px;
-    margin: 5px;
     padding: 10px;
-    border: solid 1px rgb(179, 179, 179);
 }
 
 .Item-image {

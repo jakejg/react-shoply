@@ -3,3 +3,15 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.ProductList-link {
+    margin: 5px;
+    color: black;
+    border: solid 2px rgb(179, 179, 179);
+}
+
+.ProductList-link:hover {
+    margin: 5px;
+    text-decoration: none;
+    color: black;
+}
