@@ -22,5 +22,16 @@
     font-size: 2em;
 }
 
+.Cart-Total {
+    font-size: 2em;
+    text-align: right;
+    margin-right: 40px;
+}
+
+.Cart-Quantity {
+    font-size: 2em;
+    font-weight: bold;
+}
+
 
 

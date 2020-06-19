@@ -16,7 +16,7 @@ const CartItem = ({ id, name, price, description, image_url, single=true, quanti
             description={description}
             image_url={image_url}
             single={false} />
-            <div>{quantity}</div>
+            <div className="Cart-Quantity">{quantity}</div>
         </div>
     )
 }
