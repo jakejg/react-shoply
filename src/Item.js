@@ -26,8 +26,8 @@ const Item = ({ id, name, price, description, image_url }) => {
             <img className="Item-image" src={image_url} alt="Product" />
             <div className="Item-body">
                 <div><b>{capitalized}</b></div>
-                <div>{description}</div>
-                <div><b>Price: {price}</b></div>
+                {/* <div>{description}</div>
+                <div><b>Price: {price}</b></div> */}
                 <Button color="success" className="m-2" onClick={() => addToCart(id)}>Add to Cart</Button>
                 <Button color="danger" className="m-2" onClick={() => removeFromCart(id)}>Remove from Cart</Button>
             </div>

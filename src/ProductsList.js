@@ -11,11 +11,13 @@ const ProductsList = () => {
                                     name={product.name}
                                     price={product.price}
                                     description={product.description}
-                                    image_url={product.image_url} /> )
+                                    image_url={product.image_url}
+                                     /> )
 
     return (
         <div className="ProductList">
-            {productList}
+            <h1>Products</h1>
+            <div className="ProductList-items">{productList}</div>
         </div>
     )
 }
