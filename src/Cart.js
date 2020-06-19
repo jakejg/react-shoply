@@ -11,7 +11,7 @@ function Cart() {
     const items = cart.map(itemData => {
         const item = products.find(product => product.id === itemData.id);
         total += item.price * itemData.quantity;
-        return <li>
+        return <li key={itemData.id}>
                 <CartItem
                     id={itemData.id} 
                     name={item.name}
@@ -32,7 +32,7 @@ function Cart() {
             <ul className="Cart-list">
             {items}
             </ul>
-            {cart.length === 0 ? <div>Nothing in your cart yet!</div> : <div className="Cart-Total"><b>Total:</b> {total.toFixed(2)}</div>}
+            {cart.length === 0 ? <div>Nothing in your cart yet!</div> : <div className="Cart-Total"><b>Total:</b> ${total.toFixed(2)}</div>}
         </div>
     );
 }

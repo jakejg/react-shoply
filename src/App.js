@@ -7,8 +7,10 @@ import  { NavLink } from 'react-router-dom';
 function App() {
     return (
         <div className="App">
-            <NavLink to='/'>Products</NavLink>
-            <NavLink to='/cart'>Cart</NavLink>
+            <nav className="Nav">
+                <NavLink className="Nav-Link" to='/'>Products</NavLink>
+                <NavLink className="Nav-Link" to='/cart'>Cart</NavLink>
+            </nav>
             <Routes />
         </div>
     );

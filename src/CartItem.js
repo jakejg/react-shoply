@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { useDispatch } from  'react-redux';
-import { add, remove } from './Reducers/actionCreators';
-import { Button } from 'reactstrap';
+import React from 'react';
 import Item from './Item';
 import './Cart.css'
   

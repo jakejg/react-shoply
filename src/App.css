@@ -3,3 +3,13 @@
   text-align: center;
 }
 
+.Nav {
+  text-align: right;
+  margin: 15px;
+}
+
+.Nav-Link {
+  margin: 5px;
+  font-weight: bold;
+}
+

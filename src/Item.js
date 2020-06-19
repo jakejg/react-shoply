@@ -29,7 +29,7 @@ const Item = ({ id, name, price, description, image_url, single=true }) => {
             <div className="Item-body">
                 <div><b>{capitalized}</b></div>
                 {single && <div>{description}</div>}
-                <div><b>Price: {price}</b></div>
+                <div><b>Price: ${price}</b></div>
                 <Button color="success" className="m-2" onClick={(e) => addToCart(id, e)}>Add to Cart</Button>
                 <Button color="danger" className="m-2" onClick={(e) => removeFromCart(id, e)}>Remove from Cart</Button>
             </div>
