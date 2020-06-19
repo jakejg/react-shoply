@@ -1,0 +1,26 @@
+.Cart-list {
+    list-style: none;
+}
+
+.Cart-list li {
+    border: 1px solid black;
+    margin: 20px;
+    margin-left: 0px;
+    border-radius: 10px;
+}
+
+.Cart-Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 80px;
+}
+
+.Cart-Title {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+}
+
+
+

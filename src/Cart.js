@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector} from  'react-redux';
 import CartItem from './CartItem';
+import './Cart.css'
 
 function Cart() {
     const cart = useSelector(store => store.cart);
@@ -19,13 +20,17 @@ function Cart() {
                 </li>
     })
 
-
     return (
         <div className="Cart">
             <h1>Your Cart</h1>
-            <ul>
+            <div className="Cart-Title">
+                <div>Items</div>
+                <div>Quantity</div>
+            </div>
+            <ul className="Cart-list">
             {items}
             </ul>
+            <div>Total:</div>
         </div>
     );
 }
