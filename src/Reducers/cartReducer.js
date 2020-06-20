@@ -16,7 +16,7 @@ const cartReducer = (state=INITIAL_STATE, action) => {
             else {
                 return [...state, {id: action.id, quantity: 1}]
             }
-            
+
          // if there is more than one of an item, decrease the quantity by 1, otherwise delete it.
         case REMOVE:
             const newState = [];
@@ -31,12 +31,6 @@ const cartReducer = (state=INITIAL_STATE, action) => {
                 }
             }
             return newState;
-
-    
-            
-            // const idx = state.findIndex(id => id === action.id);
-            // if (idx >= 0) return [...state.slice(0, idx), ...state.slice(idx + 1)];
-            // else return state;
 
         default:
             return state

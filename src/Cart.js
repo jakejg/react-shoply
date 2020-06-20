@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector} from  'react-redux';
 import CartItem from './CartItem';
 import './Cart.css'
+import DiscountForm from './DiscountForm';
 
 function Cart() {
+    const [ discount, setDiscount ] = useState(0);
+    const [ error, setError ] = useState(false);
+    let total = 0;
     const cart = useSelector(store => store.cart);
     const products = useSelector(store => store.products);
-    let total = 0;
 
     const items = cart.map(itemData => {
         const item = products.find(product => product.id === itemData.id);
@@ -22,6 +25,15 @@ function Cart() {
                 </li>
     })
 
+    const appyDiscount = amount => {
+        if (discount === 0){
+            setDiscount(discount => total * amount)
+        }
+        else {
+            setError(true)
+        }
+    }
+
     return (
         <div className="Cart">
             <h1>Your Cart</h1>
@@ -32,7 +44,12 @@ function Cart() {
             <ul className="Cart-list">
             {items}
             </ul>
-            {cart.length === 0 ? <div>Nothing in your cart yet!</div> : <div className="Cart-Total"><b>Total:</b> ${total.toFixed(2)}</div>}
+            {cart.length === 0 ? <div>Nothing in your cart yet!</div> : 
+                <>
+                    <div className="Cart-Total"><b>Total:</b> ${(total - discount).toFixed(2)}</div>
+                    <DiscountForm applyDiscount={appyDiscount}/>
+                    {error && <div><b>Discount already applied</b></div>}
+                </>}
         </div>
     );
 }
