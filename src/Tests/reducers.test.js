@@ -3,13 +3,16 @@ import { ADD, REMOVE } from '../Reducers/actionTypes';
 
 
 test('can add an item to the cart', () => {
-    expect(cartReducer([], {type: ADD, id: 'asd13'})).toEqual(['asd13']);
+    expect(cartReducer([], {type: ADD, id: 'asd13' })).toEqual([{id: 'asd13', quantity: 1}])
 })
 
 test('can add a duplicate item to the cart', () => {
-    expect(cartReducer(['asd13'], {type: ADD, id: 'asd13'})).toEqual(['asd13', 'asd13']);
+    expect(cartReducer([{id: 'asd13', quantity: 1}], {type: ADD, id: 'asd13'})).toEqual([{id: 'asd13', quantity: 2}]);
+})
+test('can add a another item to the cart', () => {
+    expect(cartReducer([{id: 'asd13', quantity: 2}], {type: ADD, id: '93ju2'})).toEqual([{id: 'asd13', quantity: 2}, {id: '93ju2' , quantity: 1}]);
 })
 
 test('can remove 1 of the duplicate items from the car', () => {
-    expect(cartReducer(['asd13', 'asd13'], {type: REMOVE, id: 'asd13'})).toEqual(['asd13']);
+    expect(cartReducer([{id: 'asd13', quantity: 2}, {id: '93ju2' , quantity: 1}], {type: REMOVE, id: 'asd13'})).toEqual([{id: 'asd13', quantity: 1}, {id: '93ju2' , quantity: 1}]);
 })
