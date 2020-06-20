@@ -7,13 +7,10 @@ import DiscountForm from './DiscountForm';
 function Cart() {
     const [ discount, setDiscount ] = useState(0);
     const [ error, setError ] = useState(false);
-    let total = 0;
-    const cart = useSelector(store => store.cart);
-    const products = useSelector(store => store.products);
+    const { cart, products } = useSelector(store => store);
 
     const items = cart.map(itemData => {
         const item = products.find(product => product.id === itemData.id);
-        total += item.price * itemData.quantity;
         return <li key={itemData.id}>
                 <CartItem
                     id={itemData.id} 
@@ -26,12 +23,12 @@ function Cart() {
     })
 
     const appyDiscount = amount => {
-        if (discount === 0){
-            setDiscount(discount => total * amount)
-        }
-        else {
-            setError(true)
-        }
+        // if (discount === 0){
+        //     setDiscount(discount => total * amount)
+        // }
+        // else {
+        //     setError(true)
+        // }
     }
 
     return (
@@ -46,7 +43,7 @@ function Cart() {
             </ul>
             {cart.length === 0 ? <div>Nothing in your cart yet!</div> : 
                 <>
-                    <div className="Cart-Total"><b>Total:</b> ${(total - discount).toFixed(2)}</div>
+                    <div className="Cart-Total"><b>Total:</b> ${cart.total.toFixed(2)}</div>
                     <DiscountForm applyDiscount={appyDiscount}/>
                     {error && <div><b>Discount already applied</b></div>}
                 </>}

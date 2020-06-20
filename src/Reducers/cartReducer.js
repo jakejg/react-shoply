@@ -1,12 +1,18 @@
 import { ADD, REMOVE } from './actionTypes';
-const INITIAL_STATE = [];
+import calcTotal from '../calcTotal';
+
+const INITIAL_STATE = {items: [],
+                        total: 0,
+                        discountApplied: false,
+                        discountAmount: 0 };
 
 const cartReducer = (state=INITIAL_STATE, action) => {
     switch (action.type) {
         // if the item is in the cart add 1 to the quantity, if not add a new item
         case ADD:
-            if (state.some(item => item.id === action.id)) {
-                return state.map(item =>{
+            let items;
+            if (state.items.some(item => item.id === action.id)) {
+                items = state.items.map(item => {
                     if (item.id === action.id) {
                         return {id: item.id, quantity: item.quantity + 1}
                     }
@@ -14,7 +20,13 @@ const cartReducer = (state=INITIAL_STATE, action) => {
                 })
             }
             else {
-                return [...state, {id: action.id, quantity: 1}]
+                items = [...state.items, {id: action.id, quantity: 1}]        
+            }
+            return {
+                items,
+                total: calcTotal(items),
+                discountApplied: false,
+                discountAmount: 0
             }
 
          // if there is more than one of an item, decrease the quantity by 1, otherwise delete it.
