@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { applyDiscount } from './Reducers/actionCreators';
 
-function DiscountForm({applyDiscount}) {
+function DiscountForm() {
     const [discountInput, setDiscountInput] = useState('');
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setDiscountInput(e.target.value);
@@ -10,13 +13,13 @@ function DiscountForm({applyDiscount}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (discountInput === 'REMOVE10') {
-            applyDiscount(.1)
+            dispatch(applyDiscount(.1))
         }
         else if (discountInput === 'REMOVE20') {
-            applyDiscount(.2)
+            dispatch(applyDiscount(.2))
         }
         else if (discountInput === 'REMOVE30') {
-            applyDiscount(.3)
+            dispatch(applyDiscount(.3))
         }
     }
 

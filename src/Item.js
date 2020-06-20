@@ -10,7 +10,7 @@ const Item = ({ id, name, price, description, image_url, single=true }) => {
 
     const addToCart = (id, e) => {
         e.preventDefault();
-        dispatch(add(id))
+        dispatch(add(id, price))
     }
 
     const removeFromCart = (id, e) => {

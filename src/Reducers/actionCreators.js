@@ -1,5 +1,7 @@
-import { ADD, REMOVE } from './actionTypes';
+import { ADD, REMOVE, APPLY_DISCOUNT } from './actionTypes';
 
-export const add = (id) => ({type: ADD, id});
+export const add = (id, price) => ({type: ADD, id, price});
 
 export const remove = (id) => ({type: REMOVE, id});
+
+export const applyDiscount = (amount) => ({type: APPLY_DISCOUNT, amount});

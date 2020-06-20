@@ -1,16 +1,15 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
 
-const CalcTotal = (cart) =>{
+const CalcTotal = (cart, discountAmount) =>{
     let total = 0;
-    const { products } = useSelector(store => store);
 
     for (let itemData of cart) {
-        const item = products.find(product => product.id === itemData.id);
-        total += item.price * itemData.quantity;
+        total += itemData.price * itemData.quantity;
+    }
+    if (discountAmount) {
+        total -= total * discountAmount;
     }
         
-    return total
+    return total;
 }
 
 export default CalcTotal;
