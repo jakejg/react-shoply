@@ -24,9 +24,9 @@ const cartReducer = (state=INITIAL_STATE, action) => {
             }
             return {
                 items,
-                total: calcTotal(items),
-                discountApplied: false,
-                discountAmount: 0
+                total: calcTotal(items, state.discountAmount),
+                discountApplied: state.discountApplied,
+                discountAmount: state.discountAmount
             }
 
          // if there is more than one of an item, decrease the quantity by 1 and add it to the new array.
@@ -44,9 +44,9 @@ const cartReducer = (state=INITIAL_STATE, action) => {
             }
             return {
                 items: reducedItems,
-                total: calcTotal(reducedItems),
-                discountApplied: false,
-                discountAmount: 0
+                total: calcTotal(reducedItems, state.discountAmount),
+                discountApplied: state.discountApplied,
+                discountAmount: state.discountAmount
             }
         case APPLY_DISCOUNT:
             let total = state.total;
@@ -57,7 +57,7 @@ const cartReducer = (state=INITIAL_STATE, action) => {
                 ...state,
                 total,
                 discountApplied: true,
-                discountAmount: 0
+                discountAmount: action.amount
             }
 
 

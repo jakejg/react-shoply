@@ -5,7 +5,7 @@ const CalcTotal = (cart, discountAmount) =>{
     for (let itemData of cart) {
         total += itemData.price * itemData.quantity;
     }
-    if (discountAmount) {
+    if (discountAmount !== 0) {
         total -= total * discountAmount;
     }
         
